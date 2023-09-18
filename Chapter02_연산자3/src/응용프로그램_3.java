@@ -12,7 +12,7 @@ public static void main(String[] args) {
 
  */
 import java.util.Scanner;
-public class 응용프로그램_2 {
+public class 응용프로그램_3 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

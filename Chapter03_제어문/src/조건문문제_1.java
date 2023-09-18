@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class 문제 {
+public class 조건문문제_1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -19,6 +19,7 @@ public class 문제7 {
 				break;
 			}
 		}
+		
 	}
 
 }

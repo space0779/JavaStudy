@@ -19,7 +19,7 @@ public class 문제7 {
 				break;
 			}
 		}
-		
+		//int[] a=new int[5]
 	}
 
 }

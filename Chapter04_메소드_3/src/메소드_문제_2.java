@@ -5,8 +5,8 @@ public class 메소드_문제_2 {
 	{
 		Scanner scan=new Scanner(System.in);
 		System.out.print("정수입력:");
-		int num=scan.nextInt();
-		return num;
+		
+		return scan.nextInt();
 	}
 	static String check(int num)
 	{

@@ -25,6 +25,9 @@ public class MainClass4 {
 		Member m=new Member(); //m(age,name)
 		m.setAge(20);// m.age
 		m.setName("홍길동");// m.name
+		
+		System.out.println(m.getAge());
+		System.out.println(m.getName());
 	}
 
 }

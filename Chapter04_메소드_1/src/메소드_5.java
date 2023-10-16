@@ -6,6 +6,7 @@ public class 메소드_5 {
 	{
 		Scanner scan=new Scanner(System.in);
 		System.out.print(msg+"정수 입력:");
+		
 		return scan.nextInt();
 	}
 	static char opInput()
@@ -29,10 +30,10 @@ public class 메소드_5 {
 			System.out.printf("%d+%d=%d\n",num1,num2,num2-num2);
 			break;
 		case '*':
-			System.out.printf("%d+%d=%d\n",num1,num2,num2*num2);
+			System.out.printf("%d*%d=%d\n",num1,num2,num2*num2);
 			break;
 		case '/':
-			System.out.printf("%d+%d=%d\n",num1,num2,num2/num2);
+			System.out.printf("%d/%d=%d\n",num1,num2,num2/num2);
 			if(num2==0)
 				System.out.println("0으로 나눌 수 없다");
 			else

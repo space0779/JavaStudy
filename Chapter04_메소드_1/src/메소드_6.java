@@ -20,11 +20,15 @@ public class 메소드_6 {
 		else
 			System.out.println(c+"는(은) 알파벳이 아닙니다");
 	}
+	static void process()
+	{
+		char c=alphaInput();
+		result(c);
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// 알파벳 받기
-		char c=alphaInput();
-		result(c);
+		process();
 	}
 
 }

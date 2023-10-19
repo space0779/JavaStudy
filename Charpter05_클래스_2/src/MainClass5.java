@@ -72,7 +72,7 @@ class 연극{
 	int no;
 	String poster,title,genre,regdate,location,actor,grade,time;
 }
-public class MainClass {
+public class MainClass5 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

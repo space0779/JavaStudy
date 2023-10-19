@@ -154,7 +154,7 @@ class B implements A
 }*/
 import javax.swing.*;
 import java.awt.event.*;
-public class MainClass_3 extends JFrame implements ActionListener,MouseListener,KeyListener{
+public class MainClass3 extends JFrame implements ActionListener,MouseListener,KeyListener{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

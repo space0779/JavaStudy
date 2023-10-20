@@ -110,7 +110,7 @@ public class MainClass {
         bb.aaa();
         bb.bbb();
         bb.ccc();
-        
+        System.out.println("=======");
         A cc=new B();
         // ==> 인터페이스 (클래스 여러개를 묶어서 사용) => 30%
         System.out.println("cc.a="+cc.a);

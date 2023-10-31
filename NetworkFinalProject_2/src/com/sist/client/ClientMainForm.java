@@ -37,7 +37,7 @@ public class ClientMainForm extends JFrame implements ActionListener{
     public ClientMainForm()
     {
     	setLayout(null); // 직접 배치
-    	logo.setBounds(10, 15, 120, 120);
+    	logo.setBounds(15, 20, 100, 150);
     	logo.setIcon(new ImageIcon(ImageChange.getImage(
     			new ImageIcon("c:\\javaDev\\logo.png"), 100, 100)));
     	add(logo);

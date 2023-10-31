@@ -65,7 +65,7 @@ public class ClientMainForm extends JFrame implements ActionListener{
     	login.b1.addActionListener(this);
     	
     	ArrayList<FoodCategoryVO> list=fm.foodCategoryData(1);
-    	cp.hp.cardInit();
+//    	cp.hp.cardInit();
     	cp.hp.cardPrint(list);
     			
     	

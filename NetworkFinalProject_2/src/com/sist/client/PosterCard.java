@@ -11,19 +11,32 @@ public class PosterCard extends JPanel{
 	public PosterCard(FoodCategoryVO vo)
 	{
 		setLayout(null);
-		poLa.setBounds(5, 5, 280, 170);
-		tLa.setBounds(5, 160, 280, 30);
+		poLa.setBounds(5, 5, 500, 170);
+		tLa.setBounds(5, 172, 280, 30);
 		
 		add(poLa);
 		add(tLa);
 		
 		try
 		{
-			URL url=new URL(vo.getPoster().substring(0,vo.getPoster().lastIndexOf("?")));
-			Image image=ImageChange.getImage(new ImageIcon(url),
-					280, 150);
-			poLa.setIcon(new ImageIcon(image));
-			tLa.setText(vo.getTitle());
+			if(vo.getPoster()!=null)
+			   {
+			     URL url=new URL(
+					   vo.getPoster().substring(0,vo.getPoster().lastIndexOf("?")));
+			     Image image=ImageChange.getImage(new ImageIcon(url),
+					   500, 170);
+			     poLa.setIcon(new ImageIcon(image));
+			   }
+			   else
+			   {
+				     Image image=ImageChange.getImage(
+				    		 new ImageIcon(vo.getPoster()),
+						   500, 170);
+				     
+				     poLa.setIcon(new ImageIcon(image)); 
+			   }
+			   tLa.setText(vo.getTitle());
+			   System.out.println(vo.getTitle());
 		}catch(Exception ex) {}
 		
 	}

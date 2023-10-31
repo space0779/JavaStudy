@@ -2,10 +2,13 @@ package com.sist.client;
 import javax.swing.*;
 
 import com.sist.common.ImageChange;
+import com.sist.manager.FoodManager;
+import com.sist.vo.FoodCategoryVO;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 /*
  *   FlowLayout : JPanel 
  *      --------------
@@ -34,19 +37,20 @@ public class ClientMainForm extends JFrame implements ActionListener{
     ControllPanel cp=new ControllPanel();
     JLabel logo=new JLabel();
     Login login=new Login();
+    FoodManager fm=new FoodManager();
     public ClientMainForm()
     {
     	setLayout(null); // 직접 배치
-    	logo.setBounds(10, 15, 120, 120);
+    	logo.setBounds(15, 20, 100, 150);
     	logo.setIcon(new ImageIcon(ImageChange.getImage(
-    			new ImageIcon("c:\\javaDev\\logo.jpg"), 120, 120)));
+    			new ImageIcon("c:\\javaDev\\logo.png"), 100, 100)));
     	add(logo);
-    	mp.setBounds(10, 175, 120, 250);
+    	mp.setBounds(15, 175, 100, 250);
     	add(mp);
     	
-    	cp.setBounds(135, 15, 865, 705);
+    	cp.setBounds(130, 15, 1500, 830);
     	add(cp);
-    	setSize(1025, 768);
+    	setSize(1650, 880);
     	//setVisible(true);
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
     	setResizable(false);
@@ -59,6 +63,11 @@ public class ClientMainForm extends JFrame implements ActionListener{
     	mp.b6.addActionListener(this);
     	
     	login.b1.addActionListener(this);
+    	
+    	ArrayList<FoodCategoryVO> list=fm.foodCategoryData(1);
+//    	cp.hp.cardInit();
+    	cp.hp.cardPrint(list);
+    			
     	
     }
 	public static void main(String[] args) {

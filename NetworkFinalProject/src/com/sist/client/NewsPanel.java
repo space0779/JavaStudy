@@ -5,6 +5,6 @@ import javax.swing.*;
 public class NewsPanel extends JPanel{
    public NewsPanel()
    {
-	   setBackground(Color.orange);
+	   setBackground(Color.DARK_GRAY);
    }
 }

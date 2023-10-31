@@ -10,7 +10,7 @@ public class MenuPanel extends JPanel{
    public JButton b1,b2,b3,b4,b5,b6;
    public MenuPanel()
    {
-	   b1=new JButton("HOME");
+	   b1=new JButton("매거진");
 	   b2=new JButton("맛집 검색");
 	   b3=new JButton("실시간 채팅");
 	   b4=new JButton("커뮤니티");

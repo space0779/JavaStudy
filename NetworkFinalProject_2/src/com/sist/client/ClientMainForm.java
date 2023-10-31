@@ -83,7 +83,7 @@ public class ClientMainForm extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()==mp.b1)
 		{
-			cp.card.show(cp, "home");
+			cp.card.show(cp, "매거진");
 		}
 		else if(e.getSource()==mp.b2)
 		{

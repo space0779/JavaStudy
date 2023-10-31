@@ -20,7 +20,7 @@ public class ControllPanel extends JPanel{
     	bdel=new BoardDeletePanel(this);
     	bup=new BoardUpdatePanel(this);
     	setLayout(card);
-    	add("home",hp);
+    	add("매거진",hp);
     	add("chat",cp);
     	add("board",blp);
     	add("news",np);

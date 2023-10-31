@@ -42,7 +42,7 @@ implements ActionListener,MouseListener
     	table=new JTable(model);
     	table.getTableHeader().setReorderingAllowed(false);
     	table.setShowVerticalLines(false);
-    	table.setRowHeight(40);
+    	table.setRowHeight(60);
     	table.getTableHeader().setPreferredSize(new Dimension(35,35));
     	table.getColumn("번호").setPreferredWidth(30);
     	table.getColumn("제목").setPreferredWidth(400);

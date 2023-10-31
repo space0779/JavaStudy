@@ -107,21 +107,91 @@ public class BoardManager {
 		   BoardVO bVO=bList.get(i);
 		   if(bVO.getNo()==no)
 		   {
-			   bVO.setHit(bVO.getHit()+1);// 조회수 증가
+			   bVO.setHit(bVO.getHit()+1);// 조회수 증가 
 			   vo=bVO;
-			   fileSave();// 파일과 ArrayList가 동일
+			   fileSave();// 파일과 ArrayList가 동일 
 			   break;
-			   // 다음주부터 => 파일 / 오라클
+			   // 다음주부터 => 파일 / 오라클 
 			   // UPDATE board SET hit=hit+1 WHERE no=1;
-			   // 오라클 (웹 핵심) => SQL
-			   // SQL (CRUD => SELECT , INSERT , UPDATE , DELETE)
+			   // 오라클 (웹 핵심) => SQL 
+			   // SQL (CRUD => SELECT , INSERT , UPDATE, DELETE)
 		   }
 	   }
 	   return vo;
    }
    // 수정하기 ===
+   public BoardVO boardUpdateData(int no)
+   {
+	   BoardVO vo=new BoardVO();
+	   for(BoardVO bVO:bList)
+	   {
+		   if(bVO.getNo()==no)
+		   {
+			   vo=bVO;
+			   break;
+		   }
+	   }
+	   return vo;
+   }
+   public String boardUpdate(BoardVO vo)
+   {
+	   String result="";// YES/NO
+	   for(int i=0;i<bList.size();i++)
+	   {
+		   // remove(index) , set(index)
+		   BoardVO pVO=bList.get(i);
+		   if(pVO.getNo()==vo.getNo())
+		   {
+			   if(pVO.getPwd().equals(vo.getPwd()))
+			   {
+				   // 수정 (비밀번호가 일치)
+				   result="YES";
+//				   bList.set(i, vo);// 메모리 => 수정
+				   pVO.setContent(vo.getContent());
+				   pVO.setName(vo.getName());
+				   pVO.setSubject(vo.getSubject());
+				   fileSave();// 파일 => 수정된 내용을 파일에 저장
+				   // 메모리 저장 == 파일에 저장
+			   }
+			   else
+			   {
+				   // 비밀번호가 틀린 상태
+				   result="NO";
+			   }
+			   break;
+		   }
+	   }
+	   return result;
+   }
    // 삭제하기 ===  동일 코딩 ==> 파일에 저장 
-   // 검색하기 
+   // ArrayList 제어 / 파일 제어 => 웹 => Manager
+   // 웹 => 파일 대신 오라클
+   public String boardDelte(int no,String pwd)
+   {
+	   String result=""; // NO , YES
+	   for(int i=0;i<bList.size();i++)
+	   {
+		   BoardVO vo=bList.get(i);
+		   if(vo.getNo()==no)
+		   {
+			   if(vo.getPwd().equals(pwd))
+			   {
+				   // 삭제 대상 => 비밀번호가 일치
+				   result="YES";
+				   bList.remove(i);
+				   fileSave();
+			   }
+			   else
+			   {
+				   // 비밀번호가 틀린 상태
+				   result="NO";
+			   }
+			   
+			   break;
+		   }
+	   }
+	   return result;
+   }
    // 자동 증가번호 만들기 => 스퀀스 
    // SELECT MAX(no)+1 FROM board
    public int boardSequence()

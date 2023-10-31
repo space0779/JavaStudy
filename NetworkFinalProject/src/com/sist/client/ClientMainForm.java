@@ -39,14 +39,14 @@ public class ClientMainForm extends JFrame implements ActionListener{
     	setLayout(null); // 직접 배치
     	logo.setBounds(10, 15, 120, 120);
     	logo.setIcon(new ImageIcon(ImageChange.getImage(
-    			new ImageIcon("c:\\javaDev\\logo.png"), 100, 100)));
+    			new ImageIcon("c:\\javaDev\\logo.jpg"), 120, 120)));
     	add(logo);
-    	mp.setBounds(15, 175, 100, 250);
+    	mp.setBounds(10, 175, 120, 250);
     	add(mp);
     	
-    	cp.setBounds(130, 15, 1500, 830);
+    	cp.setBounds(135, 15, 865, 705);
     	add(cp);
-    	setSize(1650, 880);
+    	setSize(1025, 768);
     	//setVisible(true);
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
     	setResizable(false);

@@ -14,6 +14,11 @@ public class ControllPanel extends JPanel{
     public FoodCategoryListPanel fcp;
     public FoodDetailPanel fdp;
     public CardLayout card=new CardLayout();
+    public FoodFindPanel ffp;
+    // MVC
+    // C=>해당 클래스를 찾아서 => 처리 => 화면 이동 (Controller)
+    // V => View (화면 UI) => ~Panel
+    // M => Manager
     public ControllPanel()
     {
     	hp=new HomePanel(this);
@@ -24,6 +29,7 @@ public class ControllPanel extends JPanel{
     	bup=new BoardUpdatePanel(this);
     	fcp=new FoodCategoryListPanel(this);
     	fdp=new FoodDetailPanel(this);
+    	ffp=new FoodFindPanel(this);
     	setLayout(card);
     	add("home",hp);
     	add("chat",cp);
@@ -35,6 +41,7 @@ public class ControllPanel extends JPanel{
     	add("update",bup);
     	add("catefood",fcp);
     	add("fdetail",fdp);
+    	add("find",ffp);
     	// => @RequestMapping("update.jsp") => Spring/Spring-Boot
     	// => app.get("update")=> NodeJS
     }

@@ -279,4 +279,17 @@ public class FoodManager {
 	   }
 	   return vo;
    }
+   public ArrayList<FoodHouseVO> foodFindData(String title)
+   {
+	   ArrayList<FoodHouseVO> list=
+			   new ArrayList<FoodHouseVO>();
+	   for(FoodHouseVO fvo:fList)
+	   {
+		   if(fvo.getName().contains(title))
+		   {
+			   list.add(fvo);
+		   }
+	   }
+	   return list;
+   }
 }

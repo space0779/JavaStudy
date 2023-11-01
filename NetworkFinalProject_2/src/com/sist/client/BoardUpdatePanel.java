@@ -1,19 +1,11 @@
 package com.sist.client;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+import com.sist.vo.*;
+import com.sist.manager.*;
 
-import com.sist.manager.BoardManager;
-import com.sist.vo.BoardVO;
 public class BoardUpdatePanel extends JPanel implements ActionListener{
 	ControllPanel cp;
     JLabel titleLa;
@@ -35,7 +27,7 @@ public class BoardUpdatePanel extends JPanel implements ActionListener{
     	 la3=new JLabel("내용");
     	 la4=new JLabel("비밀번호");
     	 la5=new JLabel("");
-    	 la5.setVisible(false);// 번호
+    	 la5.setVisible(false);//인비저블 상태
     	 tf1=new JTextField();//<input type=text>
     	 tf2=new JTextField();
     	 ta=new JTextArea();//<textarea></textarea>
@@ -80,47 +72,43 @@ public class BoardUpdatePanel extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource()==b2)
-		{
-			cp.card.show(cp, "detail");
+		if(e.getSource()==b2) {
+			cp.card.show(cp, "Detail");
 		}
-		else if(e.getSource()==b1)
-		{
-			String name=tf1.getText();
-			String subject=tf2.getText();
-			String content=ta.getText();
-			String pwd=String.valueOf(pf.getPassword());
-			if(pwd.trim().length()<1)// 입력이 안된 상태
-			{
-				JOptionPane.showMessageDialog(this, "비밀번호를 입력하세요!!");
-				// 사용자 오류 발생 => 예외처리
+		else if(e.getSource()==b1) {
+			String name = tf1.getText();
+			String subject = tf2.getText();
+			String content = ta.getText();
+			String pwd = String.valueOf(pf.getPassword());
+			if(pwd.trim().length()<1) {
+				JOptionPane.showMessageDialog(this, "비밀번호를 입력해주세요.");
 				pf.requestFocus();
 				return;
 			}
-			String no=la5.getText();
-			BoardVO vo=new BoardVO();
+			
+			String no = la5.getText();
+			BoardVO vo = new BoardVO();
 			vo.setName(name);
 			vo.setSubject(subject);
 			vo.setContent(content);
 			vo.setPwd(pwd);
 			vo.setNo(Integer.parseInt(no));
 			
-			// BoardManager연결
-			String res=bm.boardUpdate(vo);
-			if(res.equals("YES"))
-			{
-				cp.card.show(cp, "board");
+			String result = bm.boardUpdate(vo);
+			
+			if(result.equals("YES")) {
+				cp.card.show(cp, "Board");
 				cp.blp.boardList();
+				
 			}
-			else
-			{
-				JOptionPane.showMessageDialog(this, "비밀번호가 틀립니다");
+			else {
+				JOptionPane.showMessageDialog(this, "비밀번호를 다시 입력해주세요.");
 				pf.setText("");
 				pf.requestFocus();
+				return;
 			}
-			// sendRedirect("detail.jsp")
-			
+			//sendRedirect("detail.jsp")
+
 		}
-		
 	}
 }

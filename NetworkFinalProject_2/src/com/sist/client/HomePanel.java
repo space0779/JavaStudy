@@ -3,99 +3,91 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
-import com.sist.manager.FoodManager;
-import com.sist.vo.FoodCategoryVO;
+import com.sist.vo.MagazineVO;
+import com.sist.manager.MagazineManager;
+
 public class HomePanel extends JPanel implements ActionListener{
-   JButton b1,b2,b3;
-   PosterCard[] pcs=new PosterCard[12];
-   FoodManager fm=new FoodManager();
-   JPanel pan=new JPanel();
-   public HomePanel()
-   {
-	   JPanel p=new JPanel();
-	   p.setLayout(new GridLayout(1,3,20,20));
-	   b1=new JButton("믿고 보는 맛집 리스트");
-	   b1.setPreferredSize(new Dimension(300,35));
-	   b2=new JButton("지역별 인기 맛집");
-	   b2.setPreferredSize(new Dimension(300,35));
-	   b3=new JButton("메뉴별 인기 맛집");
-	   b3.setPreferredSize(new Dimension(300,35));
-	   p.add(b1);p.add(b2);p.add(b3);
-	   
-	   pan.setLayout(new GridLayout(4,3,5,5));
-	   //pan.setBackground(Color.black);
-	   // 배치 
-	   setLayout(new BorderLayout());
-	   add("North",p);
-	   add("Center",pan);
-	   
-	   b1.addActionListener(this);
-	   b2.addActionListener(this);
-	   b3.addActionListener(this);
-   }
-   public void cardPrint(ArrayList<FoodCategoryVO> list)
-   {
-	   int i=0;
-	   for(FoodCategoryVO vo:list)
-	   {
-		   //System.out.println(vo.getPoster().substring(0,vo.getPoster().lastIndexOf("?")));
-		   pcs[i]=new PosterCard(vo);
-		   
-		   pan.add(pcs[i]);
-		   i++;
-	   }
-	   
-   }
-   public void cardInit(ArrayList<FoodCategoryVO> list)
-   {
-	   for(int i=0;i<list.size();i++)
-	   {
-		   pcs[i].poLa.setIcon(null);
-		   pcs[i].tLa.setText("");
-	   }
-	   pan.removeAll();// 데이터 제거
-	   pan.validate();// Panel 재배치 
-   }
+	JButton b1,b2;
+	JLabel la1;
+	PosterCard[] psc = new PosterCard[20];
+	MagazineManager mm =new MagazineManager();
+	JPanel pan = new JPanel();
+	int curPage = 1;
+	int totalPage = 0;
+	
+	public HomePanel() {
+		JPanel p = new JPanel();
+		b1 = new JButton("이전");
+		b2 = new JButton("다음");
+		totalPage = mm.MagazineTotalPage();
+		la1 = new JLabel("1page/"+totalPage+"pages");
+		p.add(b1);
+		p.add(la1);
+		p.add(b2);
+		
+		pan.setLayout(new GridLayout(4,5,5,5));
+		//배치
+		this.setLayout(new BorderLayout());
+		this.add("South",p);
+		this.add("Center",pan);
+		
+		b1.addActionListener(this);
+		b2.addActionListener(this);
+		
+	}
+	
+	public void cardPrint(ArrayList<MagazineVO> list) {
+		int i = 0;
+		for(MagazineVO vo:list) {
+			psc[i] = new PosterCard(vo);
+			pan.add(psc[i]);
+			i++;
+		}
+	}
+	public void cardInit() {
+		pan.removeAll();//데이터 제거
+		pan.repaint();
+		pan.revalidate();// panel 재배치
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource()==b1)
-		{
-			ArrayList<FoodCategoryVO> list=
-					fm.foodCategoryData(1);
-			cardInit(list);
-			cardPrint(list);
-			  
+		if(e.getSource()==b1) {
+			if(curPage>1) {
+				curPage--;
+				ArrayList<MagazineVO> list = mm.MagazineCategoryData(curPage);
+				cardInit();
+				cardPrint(list);
+				la1.setText(curPage+"page/"+totalPage+"pages");
+			}
 		}
-		else if(e.getSource()==b2)
-		{
-			   ArrayList<FoodCategoryVO> list=
-					fm.foodCategoryData(2);
-			   
-			   FoodCategoryVO fvo=
-					   new FoodCategoryVO();
-			   fvo.setPoster("null");
-			   fvo.setTitle("");
-			   for(int j=0;j<6;j++)
-			   {
-				   list.add(fvo);
-			   }
-			cardInit(list);
-			cardPrint(list);
+		else if(e.getSource()==b2) {
+			if(curPage<totalPage) {
+				curPage++;
+				ArrayList<MagazineVO> list = mm.MagazineCategoryData(curPage);
+				if(list.size()!=20) {
+					MagazineVO mVO = new MagazineVO();
+					mVO.setImage(null);
+					mVO.setTitle("");
+					for(int i=0;i<20-list.size();i++) {
+						list.add(mVO);
+					}
+				}
+				cardInit();
+				cardPrint(list);
+				la1.setText(curPage+"page/"+totalPage+"pages");
+			}
+			
 		}
-		else if(e.getSource()==b3)
-		{
-			ArrayList<FoodCategoryVO> list=
-					fm.foodCategoryData(3);
-			cardInit(list);
-			cardPrint(list);
-		}
+
+		
 	}
+
 }

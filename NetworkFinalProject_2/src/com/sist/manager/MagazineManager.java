@@ -69,17 +69,17 @@ public class MagazineManager {
 		}
 	}
 	
-	public static void main(String[] args) {
-		MagazineManager mm = new MagazineManager();
-		for(MagazineVO m :mList) {
-			System.out.println(m.getNo());
-			System.out.println(m.getTitle());
-			System.out.println(m.getImage());
-			System.out.println(m.getDate());
-			System.out.println(m.getLink());
-			System.out.println("============================");
-		}
-	}
+//	public static void main(String[] args) {
+//		MagazineManager mm = new MagazineManager();
+//		for(MagazineVO m :mList) {
+//			System.out.println(m.getNo());
+//			System.out.println(m.getTitle());
+//			System.out.println(m.getImage());
+//			System.out.println(m.getDate());
+//			System.out.println(m.getLink());
+//			System.out.println("============================");
+//		}
+//	}
 	public int MagazineTotalPage() {
 		int total = (int)(Math.ceil(mList.size()/20.0));
 		

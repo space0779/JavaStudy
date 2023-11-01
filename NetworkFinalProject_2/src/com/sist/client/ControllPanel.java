@@ -8,11 +8,12 @@ public class ControllPanel extends JPanel{
 	BoardListPanel blp;
 	ChatPanel cp = new ChatPanel();
 	SearchPanel sp = new SearchPanel();
-	HomePanel hp = new HomePanel();
+	HomePanel hp;
 	BoardInsertPanel bip;
 	BoardUpdatePanel bup;
 	BoardDeletePanel bdp;
 	DetailPanel dp;
+	MagazineDetailPanel mdp;
 	
 	public CardLayout card = new CardLayout();
 	ControllPanel(){
@@ -21,6 +22,8 @@ public class ControllPanel extends JPanel{
 		bup = new BoardUpdatePanel(this);
 		bdp = new BoardDeletePanel(this);
 		dp = new DetailPanel(this);
+		mdp = new MagazineDetailPanel(this);
+		hp = new HomePanel(this);
 		this.setLayout(card);
 		this.add("Home",hp);
 		this.add("Search",sp);
@@ -30,6 +33,7 @@ public class ControllPanel extends JPanel{
 		this.add("Update",bup);
 		this.add("Delete",bdp);
 		this.add("Detail",dp);
+		this.add("MagazineDetail",mdp);
 	}
 
 }

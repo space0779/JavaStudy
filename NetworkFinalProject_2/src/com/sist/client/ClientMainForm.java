@@ -30,7 +30,7 @@ public class ClientMainForm extends JFrame implements ActionListener{
 		this.add(cp);
 		
 		this.setSize(1650, 840);
-		
+			
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		mp.b1.addActionListener(this);

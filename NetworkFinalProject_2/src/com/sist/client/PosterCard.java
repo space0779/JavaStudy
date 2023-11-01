@@ -7,6 +7,7 @@ import com.sist.common.ImageChange;
 public class PosterCard extends JPanel{
 	JLabel poLa = new JLabel();
 	JLabel tLa = new JLabel();
+	int mno = 0;
 	public PosterCard(MagazineVO vo) {
 		this.setLayout(null);
 		poLa.setBounds(5, 5, 260, 130);
@@ -21,6 +22,7 @@ public class PosterCard extends JPanel{
 				Image image = ImageChange.getImage(new ImageIcon(url), 260, 130);
 				poLa.setIcon(new ImageIcon(image));
 				tLa.setText(vo.getTitle());
+				mno = vo.getNo();
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

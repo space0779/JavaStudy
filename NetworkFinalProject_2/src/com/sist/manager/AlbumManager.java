@@ -1,116 +1,126 @@
 package com.sist.manager;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
+import com.sist.client.ControlPanel;
+import com.sist.client.SearchPanel;
 import com.sist.vo.AlbumVO;
+import com.sist.vo.MagazineDetailVO;
 
+import java.io.*;
 public class AlbumManager {
-	public static ArrayList<AlbumVO> aList=new ArrayList<AlbumVO>();
-	static {
-//		FileReader fr=null;
-//		ObjectOutputStream oos=null;
-//		FileOutputStream fos=null;
-//		try
-//		{
+	private static ArrayList<AlbumVO> aList=new ArrayList<AlbumVO>();
+	ControlPanel cp;
+	SearchPanel sp;
+	static
+	{
+//		FileReader fr = null;
+//		FileOutputStream fos = null;
+//		ObjectOutputStream oos = null;
+//		try {
 //			fr = new FileReader("c:\\java_data\\music.txt");
-//			StringBuffer sb = new StringBuffer();
-//			int i = 0;
-//			while((i=fr.read())!=-1) {
+//			int i=0;
+//			StringBuffer sb=new StringBuffer();
+//			while((i=fr.read())!=-1)
+//			{
 //				sb.append((char)i);
 //			}
-//			fr.close();
-//			String[] cates = sb.toString().split("\n");
-//			for(String s:cates) {
-//				StringTokenizer st = new StringTokenizer(s,"|");
+//			
+//			
+//			
+//			String[] data = sb.toString().split("\n");
+//			for(String dt:data) {
 //				AlbumVO vo = new AlbumVO();
-//				vo.setNumber(Integer.parseInt(st.nextToken().replace("\ufeff","")));
-//				vo.setPoster(st.nextToken());
-//				vo.setAlbum(st.nextToken());
-//				vo.setSong(st.nextToken());
-//				vo.setSinger(st.nextToken());
-//				vo.setDate(st.nextToken());
+//				String[] dd = dt.split("\\|");
+//				vo.setNo(Integer.parseInt(dd[0]));
+//				vo.setImage(dd[1]);
+//				vo.setAlbum(dd[2]);
+//			    vo.setTitle(dd[3]);
+//				vo.setSinger(dd[4]);
+//				vo.setDate(dd[5]);
 //				aList.add(vo);
 //			}
-//			fos = new FileOutputStream("c:\\java_data\\ac.txt");
+//			fr.close();
+//			fos=new FileOutputStream("c:\\java_data\\ab.txt");
 //			oos = new ObjectOutputStream(fos);
 //			oos.writeObject(aList);
-//		}catch(Exception ex)
-//		{
-//			ex.printStackTrace();
+//			
+//		}catch(Exception e){
+//			e.printStackTrace();
 //		}
-//		finally
-//		{
+//		finally {
 //			try {
+//				fr.close();
 //				fos.close();
 //				oos.close();
-//			} catch (Exception ex2) {
+//			}catch(Exception e)
+//			{
 //				
-//				ex2.printStackTrace();
 //			}
 //		}
+		
+		
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
 		try {
-			fis = new FileInputStream("c:\\java_data\\ac.txt");
+			fis = new FileInputStream("c:\\java_data\\ab.txt");
 			ois = new ObjectInputStream(fis);
 			aList = (ArrayList<AlbumVO>)ois.readObject();
-		} catch (Exception ex) {
-			
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		finally {
 			try {
 				fis.close();
 				ois.close();
-			} catch (Exception ex2) {
-				
+			} catch (Exception e2) {
+				// TODO: handle exception
 			}
 		}
 	}
 //	public static void main(String[] args) {
-//		AlbumManager mm = new AlbumManager();
-//		for(AlbumVO m :aList) {
-//			System.out.println(m.getNumber());
-//			System.out.println(m.getPoster());
-//			System.out.println(m.getAlbum());
-//			System.out.println(m.getDate());
-//			System.out.println(m.getSong());
-//			System.out.println(m.getSinger());
-//			System.out.println(m.getDate());
-//			System.out.println("============================");
+//		AlbumManager am=new AlbumManager();
+//		for(AlbumVO vo:aList)
+//		{
+//			System.out.println(vo.getNo());
+//			System.out.println(vo.getImage());
+//			System.out.println(vo.getAlbum());
+//			System.out.println(vo.getTitle());
+//			System.out.println(vo.getSinger());
+//			System.out.println(vo.getDate());
+//			System.out.println("======================");
 //		}
 //	}
-	public int MagazineTotalPage() {
-		int total = (int)(Math.ceil(aList.size()/20.0));
+	
+	public ArrayList<AlbumVO> FindData(String title,String se)
+	   {
+		   ArrayList<AlbumVO> list=
+				   new ArrayList<AlbumVO>();
+		   
+		   
+		   for(AlbumVO fvo:aList)
+		   {
+			  if(se.equals("곡명")) 
+			  {
+			   if(fvo.getTitle().contains(title))
+			   {
+				   list.add(fvo);
+			   }
+			  }else if(se.equals("가수명"))
+			  {
+				  if(fvo.getSinger().contains(title))
+				   {
+					   list.add(fvo);
+				   }
+			  }
+			   
+			   
+		   }
+		   return list;
+	   }
+    public ArrayList<AlbumVO> AlbumDataRead(){
 		
-		return total;
+		return aList;
 	}
 	
-	public ArrayList<AlbumVO> MagazineCategoryData(int no){
-		ArrayList<AlbumVO> list = new ArrayList<AlbumVO>();
-		int end = no*20;
-		int start = end-20;
-		if(no!=(int)(Math.ceil(aList.size()/20.0))) {
-			for(int i =start;i<end;i++) {
-				list.add(aList.get(i));
-			}
-		}
-		else {
-			start = (no-1)*20;
-			end = aList.size();
-			for(int i = start;i<end;i++) {
-				list.add(aList.get(i));
-			}
-		}
-		return list;
-	}
-
-	public ArrayList<AlbumVO> AlbymData(String title) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

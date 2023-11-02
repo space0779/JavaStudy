@@ -5,9 +5,10 @@ import java.awt.*;
 public class ChatPanel extends JPanel{
    JTable table1,table2;
    DefaultTableModel model1,model2;
-   JTextPane pane;
+   JTextArea pane;
    JTextField tf;
    JButton b1,b2,b3,b4,b5,b6;
+   JScrollBar bar;
    public ChatPanel()
    {
 	   setLayout(null);
@@ -31,12 +32,12 @@ public class ChatPanel extends JPanel{
 	   js2.setBounds(10, 425, 700, 400);
 	   add(js2);
 	   
-	   pane=new JTextPane();
+	   pane=new JTextArea();
 	   JScrollPane js3=new JScrollPane(pane);
 	   pane.setEditable(false);
 	   js3.setBounds(720, 15, 700, 370);
 	   add(js3);
-	   
+	   bar=js3.getVerticalScrollBar();
 	   tf=new JTextField();
 	   tf.setBounds(720, 390, 700, 30);
 	   add(tf);
@@ -60,7 +61,6 @@ public class ChatPanel extends JPanel{
 	   add(p);
    }
 }
-
 
 
 

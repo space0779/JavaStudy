@@ -49,9 +49,7 @@ public class MagazineDetailManager {
 //				// TODO: handle exception
 //			}
 //		}
-		
-		
-		
+//		
 		
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;

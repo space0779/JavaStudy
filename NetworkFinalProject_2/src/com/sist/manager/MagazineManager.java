@@ -1,84 +1,87 @@
 package com.sist.manager;
-
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
-
-import com.sist.vo.MagazineVO;
-
+import java.util.*;
+import java.io.*;
+import com.sist.vo.*;
 public class MagazineManager {
-	public static ArrayList<MagazineVO> mList = new ArrayList<MagazineVO>();
-	static{
-//		FileReader fr = null;
-//		ObjectOutputStream oos = null;
-//		FileOutputStream fos = null;
-//		try {// 정상 수행 문장
-//			fr = new FileReader("c:\\java_data\\Magazine.txt");
-//			StringBuffer sb = new StringBuffer();
-//			int i = 0;
-//			while((i=fr.read())!=-1) {
-//				sb.append((char)i);
+	private static ArrayList<MagazineVO> mList=new ArrayList<MagazineVO>();
+	
+	static
+	{
+//		FileReader fr=null;
+//		FileOutputStream fos=null;
+//		ObjectOutputStream oos=null;
+//		
+//		
+//		try {
+//			fr=new FileReader("c:\\java_data\\magazine.txt");
+//			int i=0;
+//			String data="";
+//			while((i=fr.read())!=-1)
+//			{
+//				data+=(char)i;
 //			}
 //			fr.close();
-//			String[] cates = sb.toString().split("\n");
-//			for(String s:cates) {
-//				StringTokenizer st = new StringTokenizer(s,"|");
-//				MagazineVO vo = new MagazineVO();
-//				vo.setNo(Integer.parseInt(st.nextToken().replace("\ufeff","")));
-//				vo.setTitle(st.nextToken());
-//				vo.setImage(st.nextToken());
-//				vo.setDate(st.nextToken());
-//				vo.setLink(st.nextToken());
-//				mList.add(vo);
-//			}
-//			fos = new FileOutputStream("c:\\java_data\\mc.txt");
-//			oos = new ObjectOutputStream(fos);
+//			
+//			String[] mag=data.split("\n");
+//			for(String s:mag)
+//			{
+//				StringTokenizer st=new StringTokenizer(s,"|");
+//				MagazineVO mz=new MagazineVO();
+//				mz.setNo(Integer.parseInt(st.nextToken()));
+//				mz.setTitle(st.nextToken());
+//				mz.setImage(st.nextToken());
+//				mz.setDate(st.nextToken());
+//				mz.setLink(st.nextToken());
+//				mList.add(mz);
+//					}
+//			fos=new FileOutputStream("c:\\java_data\\mag.txt");
+//			oos=new ObjectOutputStream(fos);
 //			oos.writeObject(mList);
-//		} catch (Exception e) {//에러 확인 후 복구
-//			// TODO: handle exception
+//			
+//		}catch(Exception e)
+//		{
 //			e.printStackTrace();
-//		}finally {//무조건 수행하는 문장
+//			
+//		}finally {
 //			try {
-//				fos.close();
-//				oos.close();
-//			} catch (Exception e2) {
-//				// TODO: handle exception
-//				e2.printStackTrace();
+//				fr.close();
+//			}catch(Exception e)
+//			{
 //			}
 //		}
-		FileInputStream fis = null;
-		ObjectInputStream ois = null;
+		
+		
+		
+		
+		ObjectInputStream ois=null;
+		FileInputStream fis=null;
 		try {
-			fis = new FileInputStream("c:\\java_data\\mc.txt");
-			ois = new ObjectInputStream(fis);
-			mList = (ArrayList<MagazineVO>)ois.readObject();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		finally {
+			
+			fis=new FileInputStream("c:\\java_data\\mag.txt");
+			ois=new ObjectInputStream(fis);
+			mList=(ArrayList<MagazineVO>)ois.readObject();
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}finally
+		{
 			try {
 				fis.close();
 				ois.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
+				
+			}catch(Exception e)
+			{
+				
 			}
 		}
+		
+
 	}
-	
 //	public static void main(String[] args) {
-//		MagazineManager mm = new MagazineManager();
-//		for(MagazineVO m :mList) {
-//			System.out.println(m.getNo());
-//			System.out.println(m.getTitle());
-//			System.out.println(m.getImage());
-//			System.out.println(m.getDate());
-//			System.out.println(m.getLink());
-//			System.out.println("============================");
-//		}
+//		MagazineManager mm=new MagazineManager();
+//		System.out.println("저장완료");
+//		
 //	}
 	public int MagazineTotalPage() {
 		int total = (int)(Math.ceil(mList.size()/20.0));

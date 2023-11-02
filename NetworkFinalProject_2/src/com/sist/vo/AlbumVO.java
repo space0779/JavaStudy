@@ -1,23 +1,25 @@
 package com.sist.vo;
+
 import java.io.Serializable;
+
 public class AlbumVO implements Serializable{
-	private int number;
-	private String poster;
+	private int no;
+	private String image;
 	private String album;
-	private String song;
+	private String title;
 	private String singer;
 	private String date;
-	public int getNumber() {
-		return number;
+	public int getNo() {
+		return no;
 	}
-	public void setNumber(int number) {
-		this.number = number;
+	public void setNo(int no) {
+		this.no = no;
 	}
-	public String getPoster() {
-		return poster;
+	public String getImage() {
+		return image;
 	}
-	public void setPoster(String poster) {
-		this.poster = poster;
+	public void setImage(String image) {
+		this.image = image;
 	}
 	public String getAlbum() {
 		return album;
@@ -25,11 +27,11 @@ public class AlbumVO implements Serializable{
 	public void setAlbum(String album) {
 		this.album = album;
 	}
-	public String getSong() {
-		return song;
+	public String getTitle() {
+		return title;
 	}
-	public void setSong(String song) {
-		this.song = song;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getSinger() {
 		return singer;
@@ -43,5 +45,6 @@ public class AlbumVO implements Serializable{
 	public void setDate(String date) {
 		this.date = date;
 	}
+	
 	
 }

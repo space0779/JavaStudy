@@ -23,11 +23,11 @@ public class HomePanel extends JPanel implements ActionListener,MouseListener{
 	MagazineManager mm =new MagazineManager();
 	MagazineDetailManager mdm = new MagazineDetailManager();
 	JPanel pan = new JPanel();
-	ControllPanel cp;
+	ControlPanel cp;
 	int curPage = 1;
 	int totalPage = 0;
 	
-	public HomePanel(ControllPanel cp) {
+	public HomePanel(ControlPanel cp) {
 		this.cp = cp;
 		JPanel p = new JPanel();
 		b1 = new JButton("이전");

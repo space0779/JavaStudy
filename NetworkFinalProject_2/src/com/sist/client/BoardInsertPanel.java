@@ -1,5 +1,7 @@
 package com.sist.client;
 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,12 +18,12 @@ import com.sist.manager.BoardManager;
 import com.sist.vo.BoardVO;
 
 public class BoardInsertPanel extends JPanel implements ActionListener{
-	ControllPanel cp;
+	ControlPanel cp;
 	JLabel la,la1,la2,la3,la4;
 	JTextField tf1,tf2,tf3;
 	JTextArea ta;
 	JButton b1,b2;
-	public BoardInsertPanel(ControllPanel cp) {
+	public BoardInsertPanel(ControlPanel cp) {
 		this.cp = cp;
 		la = new JLabel("자유 게시판");
 		this.setLayout(null);
@@ -67,6 +69,9 @@ public class BoardInsertPanel extends JPanel implements ActionListener{
 		this.add(tf3);
 		
 		JPanel p = new JPanel();
+		p.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+    	b1.setPreferredSize(new Dimension(120,30));
+    	b2.setPreferredSize(new Dimension(120,30));
 		p.add(b1);
 		p.add(b2);
 		p.setBounds(10, 555, 625, 40);

@@ -19,12 +19,12 @@ import com.sist.vo.MagazineDetailVO;
 
 public class MagazineDetailPanel extends JPanel implements ActionListener{
 	
-	ControllPanel cp;
+	ControlPanel cp;
 	JLabel img;
 	JLabel la1;
 	JTextArea ta;
 	JButton b1;
-	public MagazineDetailPanel(ControllPanel cp) {
+	public MagazineDetailPanel(ControlPanel cp) {
 		this.cp = cp;
 		img = new JLabel();
 		this.add(img);

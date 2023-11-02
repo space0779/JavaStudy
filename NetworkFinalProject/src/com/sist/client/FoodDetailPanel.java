@@ -75,10 +75,10 @@ public class FoodDetailPanel extends JPanel implements ActionListener{
     	  add(la6);add(timeLa);
     	  
     	  la7.setBounds(320, 300, 70, 35);
-    	  menuLa.setBounds(395, 300, 400, 35);
+    	  menuLa.setBounds(395, 300, 400, 200);
     	  add(la7);add(menuLa);
     	  
-    	  b.setBounds(320, 340, 100, 35);
+    	  b.setBounds(320, 510, 100, 35);
     	  add(b);
     	  
     	  b.addActionListener(this);
@@ -88,15 +88,22 @@ public class FoodDetailPanel extends JPanel implements ActionListener{
       {
     	  try
     	  {
-    		  nameLa.setText(vo.getName());
-    		  scoreLa.setText(String.valueOf(vo.getScore()));
+    		  nameLa.setText("<html><h1><font color=\"blue\">"+vo.getName()+"</font></h1></html>");
+    		  scoreLa.setText("<html><h1><font color=\"orange\">"+String.valueOf(vo.getScore())+"</font></h1></html>");
     		  addressLa.setText(vo.getAddress());
     		  phoneLa.setText(vo.getPhone());
     		  typeLa.setText(vo.getType());
     		  timeLa.setText(vo.getTime());
     		  parkingLa.setText(vo.getParking());
     		  priceLa.setText(vo.getPrice());
-    		  menuLa.setText(vo.getMenu());
+    		  String html="<html><ul>";
+    		  StringTokenizer st=new StringTokenizer(vo.getMenu(),"원");
+    		  while(st.hasMoreTokens())
+    		  {
+    			  html+="<li>"+st.nextToken()+"원</li>";
+    		  }
+    		  html+="</html>";
+    		  menuLa.setText(html);
     		  
     		  URL url=new URL(vo.getPoster());
     		  Image image=ImageChange.getImage(new ImageIcon(url), 300, 500);

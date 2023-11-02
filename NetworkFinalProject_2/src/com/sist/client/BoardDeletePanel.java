@@ -7,13 +7,13 @@ import com.sist.vo.*;
 import com.sist.manager.*;
 
 public class BoardDeletePanel extends JPanel implements ActionListener{
-	ControllPanel cp;// 화면 변경 
+	ControlPanel cp;// 화면 변경 
     JLabel titleLa;
     JLabel la,la1;
     JPasswordField pf;
     JButton b1,b2;
     BoardManager bm=new BoardManager();
-    public BoardDeletePanel(ControllPanel cp)
+    public BoardDeletePanel(ControlPanel cp)
     {
     	this.cp=cp;
     	titleLa=new JLabel("삭제하기");
@@ -57,7 +57,7 @@ public class BoardDeletePanel extends JPanel implements ActionListener{
 				return ;
 			}
 			// => 비밀번호 확인
-			String res = bm.boardDelete(Integer.parseInt(no), pwd);
+			String res = bm.boardDelte(Integer.parseInt(no), pwd);
 			if(res.equals("YES")) {
 				//목록으로 이동
 				cp.blp.boardList();//변경된 내용 다시 읽기

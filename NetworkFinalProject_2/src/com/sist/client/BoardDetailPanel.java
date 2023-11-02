@@ -1,13 +1,10 @@
 package com.sist.client;
-import java.awt.Color;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import com.sist.vo.*;
 import com.sist.manager.*;
-
-public class DetailPanel extends JPanel implements ActionListener{
+public class BoardDetailPanel extends JPanel implements ActionListener{
     ControlPanel cp;// 화면 변경 
     JLabel titleLa;
     JLabel la1,la2,la3,la4,la5;
@@ -15,10 +12,10 @@ public class DetailPanel extends JPanel implements ActionListener{
     JTextPane pane;
     JButton b1,b2,b3;
     BoardManager bm=new BoardManager();
-    public DetailPanel(ControlPanel cp)
+    public BoardDetailPanel(ControlPanel cp)
     {
-   	 this.cp=cp;
-   	 titleLa=new JLabel("내용보기");
+   	     this.cp=cp;
+   	     titleLa=new JLabel("내용보기");
     	 titleLa.setFont(new Font("맑은 고딕",Font.BOLD,45));
     	 titleLa.setHorizontalAlignment(JLabel.CENTER);
     	 
@@ -26,15 +23,15 @@ public class DetailPanel extends JPanel implements ActionListener{
     	 la1.setHorizontalAlignment(JLabel.CENTER);
     	 
     	 la2=new JLabel("작성일");
-   	 la2.setHorizontalAlignment(JLabel.CENTER);
+   	     la2.setHorizontalAlignment(JLabel.CENTER);
    	 
-   	 la3=new JLabel("이름");
+   	     la3=new JLabel("이름");
     	 la3.setHorizontalAlignment(JLabel.CENTER);
     	 
     	 la4=new JLabel("조회수");
-   	 la4.setHorizontalAlignment(JLabel.CENTER);
+   	     la4.setHorizontalAlignment(JLabel.CENTER);
    	 
-   	 la5=new JLabel("제목");
+   	     la5=new JLabel("제목");
     	 la5.setHorizontalAlignment(JLabel.CENTER);
     	 
     	 noLa=new JLabel();
@@ -87,25 +84,30 @@ public class DetailPanel extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource()==b3) {
-			cp.blp.boardList();//파일 다시 읽기
-			cp.card.show(cp, "Board");
+		if(e.getSource()==b3) // 목록 이동 
+		{
+			cp.blp.boardList();// 파일을 다시 읽고 시작한다 
+			// SQL문장을 다시 실행하게 만든다
+			cp.card.show(cp, "board");
 		}
-		else if(e.getSource()==b2) {
-			String no = noLa.getText();
-			cp.bdp.la1.setText(no);
-			cp.bdp.pf.setText("");
-			cp.card.show(cp, "Delete");
+		else if(e.getSource()==b2)
+		{
+			String no=noLa.getText();
+			//cp.bdel.la1.setText(no);
+			//cp.bdel.pf.setText("");
+			// <input type="hidden">
+			cp.card.show(cp, "delete");
 		}
-		else if(e.getSource() == b1) {
-			String no = noLa.getText();
-			BoardVO vo = bm.boardUpdateData(Integer.parseInt(no));
+		else if(e.getSource()==b1)
+		{
+			String no=noLa.getText();
+			BoardVO vo=bm.boardUpdateData(Integer.parseInt(no));
 			cp.bup.tf1.setText(vo.getName());
 			cp.bup.tf2.setText(vo.getSubject());
-			cp.bup.ta.setText(vo.getContent());
 			cp.bup.la5.setText(no);
-			cp.card.show(cp, "Update");
+			cp.card.show(cp, "update");
 		}
 		
 	}
+
 }

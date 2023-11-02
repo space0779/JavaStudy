@@ -1,32 +1,22 @@
 package com.sist.client;
-import java.awt.Color;
-import java.awt.GridLayout;
-
+// Home : 맛집 카테고리 
+// 검색 
+// 채팅 
+// 오늘의 뉴스 
+// 커뮤니티 => 파일 입출력 
 import javax.swing.*;
-
+import java.awt.*;
 public class MenuPanel extends JPanel{
-	public JButton b1,b2,b3,b4,b5;
-	public MenuPanel() {
-		b1= new JButton("Home");
-		b2= new JButton("Search");//음악 검색
-		b3= new JButton("Chat");// 채팅 접속
-		b4= new JButton("Community");//커뮤니티
-		b5= new JButton("Exit");//종료
-		
-		this.setLayout(new GridLayout(5, 1, 10, 5));
-		this.add(b1);
-		this.add(b2);
-		this.add(b3);
-		this.add(b4);
-		this.add(b5);
-//		JPanel p = new JPanel();
-//		p.add(b1);
-//		p.add(b2);
-//		p.add(b3);
-//		p.add(b4);
-//		p.add(b5);
-//		p.add(b6);
-//		this.add(p);
-	}
-
+   public JButton b1,b2,b3,b4,b5,b6;
+   public MenuPanel()
+   {
+	   b1=new JButton("HOME");
+	   b2=new JButton("Search");
+	   b3=new JButton("Chat");
+	   b4=new JButton("Community");
+	   b5=new JButton("Chart");
+	   b6=new JButton("Exit");
+	   setLayout(new GridLayout(6, 1,10,10));
+	   add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);
+   }
 }

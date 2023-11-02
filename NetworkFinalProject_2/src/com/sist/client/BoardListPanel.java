@@ -1,4 +1,5 @@
 package com.sist.client;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,11 +19,11 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
 	JButton b1,b2,b3,b4;
 	JTable table;
 	DefaultTableModel model;
-	ControllPanel cp;
+	ControlPanel cp;
 	int curpage=1;
 	int totalPage = 0;
 	BoardManager bm = new BoardManager();
-	public BoardListPanel(ControllPanel cp) {
+	public BoardListPanel(ControlPanel cp) {
 		this.cp = cp;
 		String[] col1 = {"번호","제목","이름","작성일","조회수"};
 		String[][] row1 = new String[0][5];
@@ -39,9 +40,10 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
 		table.getTableHeader().setReorderingAllowed(false);
 		table.setShowVerticalLines(false);
 		table.setRowHeight(40);
+		table.getTableHeader().setPreferredSize(new Dimension(35,35));
 		table.getColumn("번호").setPreferredWidth(30);
 		table.getColumn("제목").setPreferredWidth(400);
-		table.getColumn("이름").setPreferredWidth(10);
+		table.getColumn("이름").setPreferredWidth(100);
 		table.getColumn("작성일").setPreferredWidth(150);
 		table.getColumn("조회수").setPreferredWidth(50);
 		
@@ -59,13 +61,13 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
 		this.setLayout(null);
 		la.setHorizontalAlignment(JLabel.CENTER);
 		la.setFont(new Font("굴림체",Font.BOLD,35));
-		la.setBounds(10, 15, 710, 50);
+		la.setBounds(400, 15, 710, 50);
 		this.add(la);
 		
 		b1.setBounds(10, 75, 100, 30);
 		this.add(b1);
 		
-		js.setBounds(10, 115, 710, 450);
+		js.setBounds(10, 115, 1470, 600);
 		this.add(js);
 		
 		JPanel p = new JPanel();
@@ -73,7 +75,7 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
 		p.add(pageLa);
 		p.add(b4);
 		
-		p.setBounds(10, 570, 710, 35);
+		p.setBounds(400, 770, 710, 35);
 		this.add(p);
 		
 		b1.addActionListener(this);

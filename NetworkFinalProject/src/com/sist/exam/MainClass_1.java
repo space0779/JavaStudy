@@ -19,13 +19,49 @@ package com.sist.exam;
  *       ------ 서버는 한개 수행 (사용자 요청에 대한 처리 ==> 쓰레드)
  *    => 사용자 정의 쓰레드
  *       => 서버개발자
- *       => 서버측 사이드 (서버에서 동작하게 코딩) => Back-End                               
+ *       => 서버측 사이드 (서버에서 동작하게 코딩) => Back-End 
+ *       => 방법 1
+ *          쓰레드 상속
+ *          public class MyThread extends Thread
+ *          {
+ *              Thread 확장
+ *              쓰레드가 동작
+ *              public void run()
+ *              {
+ *                 => 동작 => 한가지 일만 수행할 수 있게 만든다
+ *              }
+ *          }                             
+ *     => 방법 2    
+ *        => 동작 (확장없이)
+ *        인터페이스 구현 => 윈도우에 주로 사용
+ *        public class MyThread implement Runnable
+ *        {
+ *            public void run()
+ *            {
+ *               => 확장없이 동작만 ...
+ *            }
+ *        }
+ *     => 방법 3   
+ *        익명의 함수 ()=>run : 람다식 (메소드명 없이 사용 => 코딩이 간결)
+ *           단점 : 재사용(객체지향을 벗어난다)
+ *           Runnable r=()->{
+ *              구현
+ *           }
+ *        => 자바스크립트
+ *           function aaa(){}
+ *           let aaa=()=>{} ===> 선호 (람다(X) , 화살표함수)
+ *     => 쓰레드의 생성주기 (생성~소멸)
+ *     쓰레드 생성
+ *     => Thread=>java.lang
+ *     new Thread() ======> start
+ *     쓰레드 생성    ======> 대기 (쓰레드 필요한 자원 확보)===> 쓰레드 동작        
+ *              
  */
 public class MainClass_1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(Thread.currentThread().getName());
+		//System.out.println(Thread.currentThread().getName());
 	}
 
 }

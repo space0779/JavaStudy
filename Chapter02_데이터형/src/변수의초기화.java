@@ -28,7 +28,7 @@ public class 변수의초기화 {
         System.out.println(c);*/
 		int a=10;
 		int b=20;
-		
+		System.out.println("hello");
 		// a=20 , b=10
 		int temp=a;
 		a=b;;// a=20
